@@ -1,0 +1,42 @@
+# Default configuration for AI-Assisted UI Automation
+# Copy this file to config/production.yaml and customize as needed
+
+# Test scenario settings
+scenario: swap_test
+iteration_count: 1
+target_controllers: "17 HPM 18"
+target_network: "UCN 07"
+target_network_node: "NM 44"
+
+# Azure AI settings
+azure_endpoint: "https://your-azure-endpoint.openai.azure.com/"
+azure_api_key: "your-api-key-here"
+azure_api_version: "2024-02-01"
+azure_deployment_name: "gpt-4-vision"
+
+# Application settings
+app_window_title: "HPS Test Application"
+app_executable_path: null
+
+# Timing settings (in seconds)
+action_delay: 1.0
+inter_iteration_delay: 2.0
+screen_change_timeout: 30.0
+swap_completion_timeout: 120.0
+screen_poll_interval: 2.0
+status_poll_interval: 5.0
+
+# Behavior settings
+dry_run: false
+stop_on_error: true
+max_retries: 3
+
+# I/O settings
+output_dir: "logs"
+screenshot_dir: "screenshots"
+save_screenshots: true
+
+# Advanced settings
+ai_confidence_threshold: 0.8
+max_context_history: 10
+enable_recovery: true
