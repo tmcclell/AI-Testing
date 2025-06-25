@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Optional
 from dataclasses import dataclass
 import logging
+from dotenv import load_dotenv
 
 logger = logging.getLogger(__name__)
 
@@ -49,8 +50,25 @@ class CUAConfig:
     
     def __post_init__(self):
         """Initialize configuration after creation."""
+        self._load_dotenv()
         self._load_environment_variables()
         self._validate_configuration()
+        
+    def _load_dotenv(self):
+        """Load environment variables from .env file."""
+        # Look for .env file in current directory and parent directories
+        env_path = Path.cwd() / ".env"
+        if env_path.exists():
+            load_dotenv(env_path)
+            logger.debug(f"Loaded .env file from: {env_path}")
+        else:
+            # Try parent directory (in case running from subdirectory)
+            parent_env = Path.cwd().parent / ".env"
+            if parent_env.exists():
+                load_dotenv(parent_env)
+                logger.debug(f"Loaded .env file from: {parent_env}")
+            else:
+                logger.debug("No .env file found")
         
     def _load_environment_variables(self):
         """Load configuration from environment variables."""

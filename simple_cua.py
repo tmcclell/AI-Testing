@@ -11,11 +11,15 @@ import argparse
 import asyncio
 import logging
 import os
+from dotenv import load_dotenv
 
 from cua.agent import Agent
 from cua.local_computer import LocalComputer
 from cua.scaler import Scaler
 import openai
+
+# Load .env file at startup
+load_dotenv()
 
 
 async def main():

@@ -15,10 +15,14 @@ import os
 from pathlib import Path
 import click
 from typing import Optional
+from dotenv import load_dotenv
 
 from cua.computer_use_assistant import ComputerUseAssistant
 from cua.config import CUAConfig
 from cua.logger import setup_logging
+
+# Load .env file at startup
+load_dotenv()
 
 
 @click.command()

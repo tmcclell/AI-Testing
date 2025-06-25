@@ -50,9 +50,6 @@ simple_cua.py                 # Direct Azure CUA sample pattern
 - Python 3.8 or later
 - Azure OpenAI access with Computer Use model deployment
 - Windows, Mac, or Linux environment  
-- Required environment variables:
-  - `AZURE_OPENAI_ENDPOINT`: Your Azure OpenAI endpoint
-  - `AZURE_OPENAI_API_KEY`: Your Azure OpenAI API key
 
 ### Installation
 
@@ -67,16 +64,22 @@ simple_cua.py                 # Direct Azure CUA sample pattern
    pip install -r requirements.txt
    ```
 
-3. **Set environment variables**:
+3. **Configure Azure OpenAI credentials**:
    ```bash
-   # Windows
-   set AZURE_OPENAI_ENDPOINT=https://your-endpoint.openai.azure.com/
-   set AZURE_OPENAI_API_KEY=your-api-key
-
-   # Linux/Mac
-   export AZURE_OPENAI_ENDPOINT=https://your-endpoint.openai.azure.com/
-   export AZURE_OPENAI_API_KEY=your-api-key
+   # Copy the template file
+   cp .env.template .env
+   
+   # Edit .env with your actual credentials
+   # Replace the placeholder values with your Azure OpenAI endpoint and API key
    ```
+
+   Your `.env` file should look like:
+   ```env
+   AZURE_OPENAI_ENDPOINT=https://your-resource-name.openai.azure.com/
+   AZURE_OPENAI_API_KEY=your-actual-api-key-here
+   ```
+
+   **Note**: The `.env` file is automatically ignored by Git for security.
 
 ### Usage Options
 
