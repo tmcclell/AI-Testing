@@ -59,14 +59,15 @@ class CUAConfig:
         # Look for .env file in current directory and parent directories
         env_path = Path.cwd() / ".env"
         if env_path.exists():
-            load_dotenv(env_path)
-            logger.debug(f"Loaded .env file from: {env_path}")
+            # Use override=True to prioritize .env file over system environment variables
+            load_dotenv(env_path, override=True)
+            logger.debug(f"Loaded .env file from: {env_path} (with override)")
         else:
             # Try parent directory (in case running from subdirectory)
             parent_env = Path.cwd().parent / ".env"
             if parent_env.exists():
-                load_dotenv(parent_env)
-                logger.debug(f"Loaded .env file from: {parent_env}")
+                load_dotenv(parent_env, override=True)
+                logger.debug(f"Loaded .env file from: {parent_env} (with override)")
             else:
                 logger.debug("No .env file found")
         

@@ -18,8 +18,8 @@ from cua.local_computer import LocalComputer
 from cua.scaler import Scaler
 import openai
 
-# Load .env file at startup
-load_dotenv()
+# Load .env file at startup with override to prioritize .env over system env vars
+load_dotenv(override=True)
 
 
 async def main():
